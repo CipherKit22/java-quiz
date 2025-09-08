@@ -10,12 +10,268 @@ body {
     min-height: 100vh;
     color: #c9d1d9;
     line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Background */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Floating Code Elements */
+.code-element {
+    position: absolute;
+    color: #30363d;
+    font-family: 'SF Mono', monospace;
+    font-size: 14px;
+    opacity: 0.3;
+    animation: float 20s infinite linear;
+}
+
+.code-element:nth-child(odd) {
+    animation-duration: 25s;
+    color: #21262d;
+}
+
+.code-element:nth-child(3n) {
+    animation-duration: 30s;
+    color: #1f6feb;
+    opacity: 0.1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Binary Rain Effect */
+.binary-rain {
+    position: absolute;
+    color: #238636;
+    font-family: monospace;
+    font-size: 12px;
+    opacity: 0.15;
+    animation: binaryFall 15s infinite linear;
+}
+
+@keyframes binaryFall {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.15;
+    }
+    90% {
+        opacity: 0.15;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Geometric Shapes */
+.tech-shape {
+    position: absolute;
+    border: 1px solid #30363d;
+    opacity: 0.3;
+    animation: rotate 30s infinite linear;
+}
+
+.tech-shape.circle {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border-color: #58a6ff;
+}
+
+.tech-shape.square {
+    width: 40px;
+    height: 40px;
+    border-color: #f85149;
+    animation-direction: reverse;
+}
+
+.tech-shape.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid #30363d;
+    border-radius: 0;
+    opacity: 0.08;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) translateX(50px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(50px) rotate(-360deg);
+    }
+}
+
+/* Grid Pattern Overlay */
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(48, 54, 61, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(48, 54, 61, 0.5) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 60s infinite linear;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+/* Pulsing Dots */
+.pulse-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #58a6ff;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.pulse-dot:nth-child(even) {
+    background: #238636;
+    animation-delay: 1s;
+}
+
+.pulse-dot:nth-child(3n) {
+    background: #f85149;
+    animation-delay: 2s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.8;
+    }
+}
+
+/* Circuit Lines */
+.circuit-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #30363d, transparent);
+    opacity: 0.2;
+    animation: circuitFlow 8s infinite linear;
+}
+
+.circuit-line.vertical {
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(0deg, transparent, #30363d, transparent);
+    animation: circuitFlowVertical 10s infinite linear;
+}
+
+@keyframes circuitFlow {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+}
+
+@keyframes circuitFlowVertical {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Performance Optimizations */
+.animated-background * {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reduce animations on mobile for performance */
+@media (max-width: 768px) {
+    .code-element,
+    .binary-rain,
+    .tech-shape,
+    .circuit-line {
+        animation-duration: 40s;
+    }
+    
+    .grid-overlay {
+        animation-duration: 120s;
+    }
+    
+    .pulse-dot {
+        animation-duration: 6s;
+    }
+}
+
+/* Pause animations when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .animated-background * {
+        animation: none;
+    }
+    
+    .grid-overlay {
+        animation: none;
+    }
 }
 
 /* Page Management */
