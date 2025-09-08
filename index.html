@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <header>
+                <h1>Java Quiz Application</h1>
+                <p>Test Java Objective Questions for exam</p>
+            </header>
+
+            <div class="category-selection">
+                <h2>Select Quiz Category</h2>
+                <div class="categories">
+                    <div class="category-card" onclick="selectCategory('chapter10-11')">
+                        <h3>Chapter 10 & 11 Testing</h3>
+                        <p>Polymorphism, Inheritance, and Exception Handling</p>
+                        <span class="question-count">30 Questions</span>
+                    </div>
+                    
+                    <div class="category-card" onclick="selectCategory('gui')">
+                        <h3>GUI Part I & II</h3>
+                        <p>Swing Components, Layout Managers, and Event Handling</p>
+                        <span class="question-count">35 Questions</span>
+                    </div>
+                    
+                    <div class="category-card coming-soon" onclick="showComingSoon()">
+                        <h3>SQL</h3>
+                        <p>Database Operations and Queries</p>
+                        <span class="coming-soon-badge">Coming Soon</span>
+                    </div>
+                    
+                    <div class="category-card" onclick="selectCategory('all')">
+                        <h3>All Categories</h3>
+                        <p>Combined quiz from all available categories</p>
+                        <span class="question-count">65 Questions</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-all-section">
+                <button class="btn-secondary" onclick="showAllQuestions()">
+                    View All Questions & Answers
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Setup Page -->
+        <div id="quizSetupPage" class="page">
+            <div class="setup-container">
+                <h2>Quiz Setup</h2>
+                <div class="selected-category">
+                    <span id="selectedCategoryName"></span>
+                </div>
+                
+                <div class="quiz-options">
+                    <h3>Question Order</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="questionOrder" value="normal" checked>
+                            <span class="radio-custom"></span>
+                            Normal Order
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="questionOrder" value="shuffle">
+                            <span class="radio-custom"></span>
+                            Shuffle Questions
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setup-actions">
+                    <button class="btn-secondary" onclick="goHome()">Back to Home</button>
+                    <button class="btn-primary" onclick="startQuiz()">Start Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Page -->
+        <div id="quizPage" class="page">
+            <div class="quiz-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="quiz-info">
+                    <span id="questionNumber">Question 1 of 30</span>
+                    <span id="categoryName">Chapter 10 & 11</span>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <div class="question-card">
+                    <h3 id="questionText">Question will appear here</h3>
+                    <div id="optionsContainer" class="options-container">
+                        <!-- Options will be dynamically added -->
+                    </div>
+                </div>
+
+                <div id="answerFeedback" class="answer-feedback hidden">
+                    <div class="feedback-content">
+                        <div id="feedbackIcon" class="feedback-icon"></div>
+                        <div id="feedbackText" class="feedback-text"></div>
+                        <div id="correctAnswer" class="correct-answer"></div>
+                    </div>
+                    <button id="nextButton" class="btn-primary" onclick="nextQuestion()">Next Question</button>
+                </div>
+            </div>
+
+            <div class="quiz-actions">
+                <button class="btn-secondary" onclick="quitQuiz()">Quit Quiz</button>
+            </div>
+        </div>
+
+        <!-- Results Page -->
+        <div id="resultsPage" class="page">
+            <div class="results-container">
+                <div class="results-header">
+                    <div class="score-circle">
+                        <span id="scorePercentage">0%</span>
+                    </div>
+                    <h2>Quiz Complete!</h2>
+                    <p id="scoreText">You scored 0 out of 0</p>
+                </div>
+
+                <div class="results-details">
+                    <div class="result-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="correctAnswers">0</span>
+                            <span class="stat-label">Correct</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="incorrectAnswers">0</span>
+                            <span class="stat-label">Incorrect</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="totalQuestions">0</span>
+                            <span class="stat-label">Total</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn-secondary" onclick="reviewAnswers()">Review Answers</button>
+                    <button class="btn-primary" onclick="goHome()">Take Another Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Questions Page -->
+        <div id="allQuestionsPage" class="page">
+            <div class="all-questions-header">
+                <h2>All Questions & Answers</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" onclick="filterQuestions('all')">All</button>
+                    <button class="filter-tab" onclick="filterQuestions('chapter10-11')">Chapter 10-11</button>
+                    <button class="filter-tab" onclick="filterQuestions('gui')">GUI</button>
+                </div>
+            </div>
+
+            <div id="questionsContainer" class="questions-container">
+                <!-- Questions will be dynamically loaded -->
+            </div>
+
+            <div class="all-questions-actions">
+                <button class="btn-secondary" onclick="goHome()">Back to Home</button>
+                <button class="btn-primary" onclick="downloadPDF()">Download PDF</button>
+            </div>
+        </div>
+
+        <!-- Review Page -->
+        <div id="reviewPage" class="page">
+            <div class="review-header">
+                <h2>Review Your Answers</h2>
+                <p>See how you performed on each question</p>
+            </div>
+
+            <div id="reviewContainer" class="review-container">
+                <!-- Review content will be dynamically loaded -->
+            </div>
+
+            <div class="review-actions">
+                <button class="btn-secondary" onclick="showResults()">Back to Results</button>
+                <button class="btn-primary" onclick="goHome()">Take Another Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coming Soon Modal -->
+    <div id="comingSoonModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeComingSoonModal()">&times;</span>
+            <div class="modal-body">
+                <h3>SQL Quiz Coming Soon!</h3>
+                <p>We're working hard to bring you comprehensive SQL questions. Stay tuned!</p>
+                <button class="btn-primary" onclick="closeComingSoonModal()">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="quizData.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
