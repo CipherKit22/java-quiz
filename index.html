@@ -7,12 +7,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Background -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-animation">
+                <div class="code-brackets">&lt;</div>
+                <div class="loader-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="code-brackets">/&gt;</div>
+            </div>
+            <p class="loader-text">Loading Java Quiz...</p>
+        </div>
+    </div>
+
     <div class="animated-background">
-        <!-- Grid Overlay -->
         <div class="grid-overlay"></div>
         
-        <!-- Floating Code Elements -->
         <div class="code-element" style="left: 10%; animation-delay: 0s;">public class Java {</div>
         <div class="code-element" style="left: 25%; animation-delay: 3s;">if (condition) {</div>
         <div class="code-element" style="left: 40%; animation-delay: 6s;">System.out.println();</div>
@@ -24,7 +36,6 @@
         <div class="code-element" style="left: 55%; animation-delay: 24s;">@Override</div>
         <div class="code-element" style="left: 80%; animation-delay: 27s;">finally { }</div>
         
-        <!-- Binary Rain -->
         <div class="binary-rain" style="left: 5%; animation-delay: 0s;">1010110101</div>
         <div class="binary-rain" style="left: 15%; animation-delay: 2s;">0110101011</div>
         <div class="binary-rain" style="left: 30%; animation-delay: 4s;">1101010110</div>
@@ -33,14 +44,12 @@
         <div class="binary-rain" style="left: 80%; animation-delay: 10s;">0110101011</div>
         <div class="binary-rain" style="left: 95%; animation-delay: 12s;">1101010110</div>
         
-        <!-- Geometric Shapes -->
         <div class="tech-shape circle" style="top: 20%; left: 20%; animation-delay: 0s;"></div>
         <div class="tech-shape square" style="top: 40%; left: 70%; animation-delay: 5s;"></div>
         <div class="tech-shape triangle" style="top: 60%; left: 30%; animation-delay: 10s;"></div>
         <div class="tech-shape circle" style="top: 80%; left: 80%; animation-delay: 15s;"></div>
         <div class="tech-shape square" style="top: 10%; left: 60%; animation-delay: 20s;"></div>
         
-        <!-- Pulsing Dots -->
         <div class="pulse-dot" style="top: 15%; left: 10%;"></div>
         <div class="pulse-dot" style="top: 25%; left: 85%;"></div>
         <div class="pulse-dot" style="top: 45%; left: 15%;"></div>
@@ -48,7 +57,6 @@
         <div class="pulse-dot" style="top: 85%; left: 25%;"></div>
         <div class="pulse-dot" style="top: 35%; left: 75%;"></div>
         
-        <!-- Circuit Lines -->
         <div class="circuit-line" style="top: 30%; width: 300px; animation-delay: 0s;"></div>
         <div class="circuit-line" style="top: 70%; width: 250px; animation-delay: 4s;"></div>
         <div class="circuit-line vertical" style="left: 20%; animation-delay: 2s;"></div>
@@ -56,7 +64,6 @@
     </div>
 
     <div class="container">
-        <!-- Home Page -->
         <div id="homePage" class="page active">
             <header>
                 <h1>Java Quiz Application</h1>
@@ -78,16 +85,16 @@
                         <span class="question-count">35 Questions</span>
                     </div>
                     
-                    <div class="category-card coming-soon" onclick="showComingSoon()">
-                        <h3>SQL</h3>
-                        <p>Database Operations and Queries</p>
-                        <span class="coming-soon-badge">Coming Soon</span>
+                    <div class="category-card" onclick="selectCategory('sql')">
+                        <h3>Collection and SQL Testing</h3>
+                        <p>Collections Framework and SQL Database Operations</p>
+                        <span class="question-count">11 Questions</span>
                     </div>
                     
                     <div class="category-card" onclick="selectCategory('all')">
                         <h3>All Categories</h3>
                         <p>Combined quiz from all available categories</p>
-                        <span class="question-count">65 Questions</span>
+                        <span class="question-count">76 Questions</span>
                     </div>
                 </div>
             </div>
@@ -99,7 +106,6 @@
             </div>
         </div>
 
-        <!-- Quiz Setup Page -->
         <div id="quizSetupPage" class="page">
             <div class="setup-container">
                 <h2>Quiz Setup</h2>
@@ -130,7 +136,6 @@
             </div>
         </div>
 
-        <!-- Quiz Page -->
         <div id="quizPage" class="page">
             <div class="quiz-header">
                 <div class="progress-bar">
@@ -146,7 +151,6 @@
                 <div class="question-card">
                     <h3 id="questionText">Question will appear here</h3>
                     <div id="optionsContainer" class="options-container">
-                        <!-- Options will be dynamically added -->
                     </div>
                 </div>
 
@@ -165,7 +169,6 @@
             </div>
         </div>
 
-        <!-- Results Page -->
         <div id="resultsPage" class="page">
             <div class="results-container">
                 <div class="results-header">
@@ -200,7 +203,6 @@
             </div>
         </div>
 
-        <!-- All Questions Page -->
         <div id="allQuestionsPage" class="page">
             <div class="all-questions-header">
                 <h2>All Questions & Answers</h2>
@@ -208,11 +210,11 @@
                     <button class="filter-tab active" onclick="filterQuestions('all')">All</button>
                     <button class="filter-tab" onclick="filterQuestions('chapter10-11')">Chapter 10-11</button>
                     <button class="filter-tab" onclick="filterQuestions('gui')">GUI</button>
+                    <button class="filter-tab" onclick="filterQuestions('sql')">Collection & SQL</button>
                 </div>
             </div>
 
             <div id="questionsContainer" class="questions-container">
-                <!-- Questions will be dynamically loaded -->
             </div>
 
             <div class="all-questions-actions">
@@ -221,7 +223,6 @@
             </div>
         </div>
 
-        <!-- Review Page -->
         <div id="reviewPage" class="page">
             <div class="review-header">
                 <h2>Review Your Answers</h2>
@@ -229,24 +230,11 @@
             </div>
 
             <div id="reviewContainer" class="review-container">
-                <!-- Review content will be dynamically loaded -->
             </div>
 
             <div class="review-actions">
                 <button class="btn-secondary" onclick="showResults()">Back to Results</button>
                 <button class="btn-primary" onclick="goHome()">Take Another Quiz</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Coming Soon Modal -->
-    <div id="comingSoonModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeComingSoonModal()">&times;</span>
-            <div class="modal-body">
-                <h3>SQL Quiz Coming Soon!</h3>
-                <p>We're working hard to bring you comprehensive SQL questions. Stay tuned!</p>
-                <button class="btn-primary" onclick="closeComingSoonModal()">Got it!</button>
             </div>
         </div>
     </div>
