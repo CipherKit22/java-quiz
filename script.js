@@ -1,16 +1,26 @@
-// Global variables
 let currentQuiz = null;
 let currentQuestions = [];
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let quizStartTime = null;
 
-// Page navigation functions
+function showLoader() {
+    document.getElementById('loader').classList.remove('hidden');
+}
+
+function hideLoader() {
+    document.getElementById('loader').classList.add('hidden');
+}
+
 function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-    });
-    document.getElementById(pageId).classList.add('active');
+    showLoader();
+    setTimeout(() => {
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        document.getElementById(pageId).classList.add('active');
+        hideLoader();
+    }, 800);
 }
 
 function goHome() {
@@ -18,13 +28,7 @@ function goHome() {
     resetQuiz();
 }
 
-// Category selection
 function selectCategory(category) {
-    if (category === 'sql') {
-        showComingSoon();
-        return;
-    }
-    
     currentQuiz = category;
     const categoryName = getCategoryDisplayName(category);
     document.getElementById('selectedCategoryName').textContent = categoryName;
@@ -37,6 +41,8 @@ function getCategoryDisplayName(category) {
             return 'Chapter 10 & 11 Testing';
         case 'gui':
             return 'GUI Part I & II';
+        case 'sql':
+            return 'Collection and SQL Testing';
         case 'all':
             return 'All Categories';
         default:
@@ -44,11 +50,9 @@ function getCategoryDisplayName(category) {
     }
 }
 
-// Quiz setup and start
 function startQuiz() {
     const questionOrder = document.querySelector('input[name="questionOrder"]:checked').value;
     
-    // Prepare questions based on selected category
     if (currentQuiz === 'all') {
         currentQuestions = getAllQuestions();
     } else {
@@ -60,20 +64,16 @@ function startQuiz() {
         }));
     }
     
-    // Shuffle questions if requested
     if (questionOrder === 'shuffle') {
         currentQuestions = shuffleArray(currentQuestions);
     }
     
-    // Reset quiz state
     currentQuestionIndex = 0;
     userAnswers = [];
     quizStartTime = new Date();
     
-    // Update quiz info
     document.getElementById('categoryName').textContent = getCategoryDisplayName(currentQuiz);
     
-    // Show first question
     showQuestion();
     showPage('quizPage');
 }
@@ -82,15 +82,12 @@ function showQuestion() {
     const question = currentQuestions[currentQuestionIndex];
     const totalQuestions = currentQuestions.length;
     
-    // Update progress
     const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
     document.getElementById('progressFill').style.width = progress + '%';
     document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
     
-    // Update question text
     document.getElementById('questionText').textContent = question.question;
     
-    // Create options
     const optionsContainer = document.getElementById('optionsContainer');
     optionsContainer.innerHTML = '';
     
@@ -102,7 +99,6 @@ function showQuestion() {
         optionsContainer.appendChild(optionElement);
     });
     
-    // Hide feedback
     document.getElementById('answerFeedback').classList.add('hidden');
 }
 
@@ -110,32 +106,27 @@ function selectOption(selectedIndex) {
     const question = currentQuestions[currentQuestionIndex];
     const options = document.querySelectorAll('.option');
     
-    // Disable all options
     options.forEach(option => {
         option.classList.add('disabled');
         option.onclick = null;
     });
     
-    // Mark selected option
     options[selectedIndex].classList.add('selected');
     
-    // Mark correct and incorrect options
     options[question.correct].classList.add('correct');
     if (selectedIndex !== question.correct) {
         options[selectedIndex].classList.add('incorrect');
     }
     
-    // Store user answer
-        userAnswers.push({
-            questionIndex: currentQuestionIndex,
-            selectedOption: selectedIndex,
-            correctOption: question.correct,
-            isCorrect: selectedIndex === question.correct,
-            question: question.question,
-            options: question.options
-        });
+    userAnswers.push({
+        questionIndex: currentQuestionIndex,
+        selectedOption: selectedIndex,
+        correctOption: question.correct,
+        isCorrect: selectedIndex === question.correct,
+        question: question.question,
+        options: question.options
+    });
     
-    // Show feedback
     showAnswerFeedback(selectedIndex === question.correct, question);
 }
 
@@ -146,7 +137,6 @@ function showAnswerFeedback(isCorrect, question) {
     const correctAnswer = document.getElementById('correctAnswer');
     const nextButton = document.getElementById('nextButton');
     
-    // Update feedback content
     if (isCorrect) {
         feedbackIcon.textContent = '[✓]';
         feedbackText.textContent = 'Correct!';
@@ -159,14 +149,12 @@ function showAnswerFeedback(isCorrect, question) {
         correctAnswer.innerHTML = `<strong>Correct answer:</strong> ${question.options[question.correct]}`;
     }
     
-    // Update next button text
     if (currentQuestionIndex === currentQuestions.length - 1) {
         nextButton.textContent = 'View Results';
     } else {
         nextButton.textContent = 'Next Question';
     }
     
-    // Show feedback
     feedback.classList.remove('hidden');
 }
 
@@ -185,14 +173,12 @@ function showResults() {
     const totalQuestions = userAnswers.length;
     const percentage = Math.round((correctAnswers / totalQuestions) * 100);
     
-    // Update results display
     document.getElementById('scorePercentage').textContent = percentage + '%';
     document.getElementById('scoreText').textContent = `You scored ${correctAnswers} out of ${totalQuestions}`;
     document.getElementById('correctAnswers').textContent = correctAnswers;
     document.getElementById('incorrectAnswers').textContent = totalQuestions - correctAnswers;
     document.getElementById('totalQuestions').textContent = totalQuestions;
     
-    // Update score circle color based on performance
     const scoreCircle = document.querySelector('.score-circle');
     if (percentage >= 80) {
         scoreCircle.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
@@ -252,14 +238,12 @@ function resetQuiz() {
     quizStartTime = null;
 }
 
-// All questions view
 function showAllQuestions() {
     displayAllQuestions('all');
     showPage('allQuestionsPage');
 }
 
 function filterQuestions(category) {
-    // Update active tab
     document.querySelectorAll('.filter-tab').forEach(tab => {
         tab.classList.remove('active');
     });
@@ -313,16 +297,13 @@ function displayAllQuestions(filterCategory) {
     });
 }
 
-// PDF Download functionality
 function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
-    // Get current filter
     const activeTab = document.querySelector('.filter-tab.active');
     const currentFilter = activeTab ? activeTab.textContent.toLowerCase() : 'all';
     
-    // Get questions based on current filter
     let questionsToDownload = [];
     if (currentFilter === 'all') {
         questionsToDownload = getAllQuestions();
@@ -340,15 +321,22 @@ function downloadPDF() {
             categoryTitle: quizData['gui'].title,
             globalId: index + 1
         }));
+    } else if (currentFilter === 'collection & sql') {
+        questionsToDownload = quizData['sql'].questions.map((q, index) => ({
+            ...q,
+            category: 'sql',
+            categoryTitle: quizData['sql'].title,
+            globalId: index + 1
+        }));
     }
     
-    // Set up PDF
     doc.setFontSize(16);
     doc.text('Java Quiz Questions & Answers', 20, 20);
     doc.setFontSize(12);
     doc.text(`Category: ${currentFilter === 'all' ? 'All Categories' : 
               currentFilter === 'chapter 10-11' ? 'Chapter 10 & 11 Testing' : 
-              currentFilter === 'gui' ? 'GUI Part I & II' : currentFilter}`, 20, 30);
+              currentFilter === 'gui' ? 'GUI Part I & II' : 
+              currentFilter === 'collection & sql' ? 'Collection and SQL Testing' : currentFilter}`, 20, 30);
     doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 40);
     
     let yPosition = 55;
@@ -356,13 +344,11 @@ function downloadPDF() {
     const marginBottom = 20;
     
     questionsToDownload.forEach((question, index) => {
-        // Check if we need a new page
         if (yPosition > pageHeight - marginBottom - 60) {
             doc.addPage();
             yPosition = 20;
         }
         
-        // Question number and text
         doc.setFontSize(11);
         doc.setFont(undefined, 'bold');
         const questionText = `${index + 1}. ${question.question}`;
@@ -370,7 +356,6 @@ function downloadPDF() {
         doc.text(questionLines, 20, yPosition);
         yPosition += questionLines.length * 5 + 5;
         
-        // Options
         doc.setFont(undefined, 'normal');
         question.options.forEach((option, optIndex) => {
             const optionLetter = String.fromCharCode(65 + optIndex);
@@ -390,51 +375,27 @@ function downloadPDF() {
             }
         });
         
-        yPosition += 8; // Space between questions
+        yPosition += 8;
     });
     
-    // Save the PDF
     const filename = `java-quiz-${currentFilter === 'all' ? 'all-categories' : 
                      currentFilter === 'chapter 10-11' ? 'chapter-10-11' : 
-                     currentFilter === 'gui' ? 'gui-part-1-2' : currentFilter}.pdf`;
+                     currentFilter === 'gui' ? 'gui-part-1-2' : 
+                     currentFilter === 'collection & sql' ? 'collection-sql' : currentFilter}.pdf`;
     doc.save(filename);
 }
 
-// Coming Soon modal
-function showComingSoon() {
-    document.getElementById('comingSoonModal').style.display = 'block';
-}
-
-function closeComingSoonModal() {
-    document.getElementById('comingSoonModal').style.display = 'none';
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('comingSoonModal');
-    if (event.target === modal) {
-        closeComingSoonModal();
-    }
-}
-
-// Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-    // Show home page by default
-    showPage('homePage');
+    setTimeout(() => {
+        hideLoader();
+        showPage('homePage');
+    }, 2000);
     
-    // Add keyboard navigation
     document.addEventListener('keydown', function(event) {
-        // ESC key to go home or close modal
         if (event.key === 'Escape') {
-            const modal = document.getElementById('comingSoonModal');
-            if (modal.style.display === 'block') {
-                closeComingSoonModal();
-            } else {
-                goHome();
-            }
+            goHome();
         }
         
-        // Number keys for option selection during quiz
         if (document.getElementById('quizPage').classList.contains('active')) {
             const num = parseInt(event.key);
             if (num >= 1 && num <= 4) {
