@@ -14,7 +14,116 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated Background */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d1117;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #58a6ff;
+}
+
+.code-brackets {
+    font-family: 'SF Mono', monospace;
+    font-weight: bold;
+    animation: bracketPulse 2s infinite ease-in-out;
+}
+
+.code-brackets:first-child {
+    animation-delay: 0s;
+}
+
+.code-brackets:last-child {
+    animation-delay: 1s;
+}
+
+.loader-dots {
+    display: flex;
+    margin: 0 15px;
+}
+
+.loader-dots span {
+    width: 8px;
+    height: 8px;
+    background: #58a6ff;
+    border-radius: 50%;
+    margin: 0 3px;
+    animation: dotBounce 1.5s infinite ease-in-out;
+}
+
+.loader-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loader-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.loader-text {
+    color: #8b949e;
+    font-size: 1rem;
+    font-family: 'SF Mono', monospace;
+    animation: textFade 2s infinite ease-in-out;
+}
+
+@keyframes bracketPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes dotBounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes textFade {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 .animated-background {
     position: fixed;
     top: 0;
@@ -25,7 +134,6 @@ body {
     pointer-events: none;
 }
 
-/* Floating Code Elements */
 .code-element {
     position: absolute;
     color: #30363d;
@@ -63,7 +171,6 @@ body {
     }
 }
 
-/* Binary Rain Effect */
 .binary-rain {
     position: absolute;
     color: #238636;
@@ -90,7 +197,6 @@ body {
     }
 }
 
-/* Geometric Shapes */
 .tech-shape {
     position: absolute;
     border: 1px solid #30363d;
@@ -131,7 +237,6 @@ body {
     }
 }
 
-/* Grid Pattern Overlay */
 .grid-overlay {
     position: absolute;
     top: 0;
@@ -154,7 +259,6 @@ body {
     }
 }
 
-/* Pulsing Dots */
 .pulse-dot {
     position: absolute;
     width: 4px;
@@ -186,7 +290,6 @@ body {
     }
 }
 
-/* Circuit Lines */
 .circuit-line {
     position: absolute;
     height: 1px;
@@ -238,14 +341,12 @@ body {
     z-index: 1;
 }
 
-/* Performance Optimizations */
 .animated-background * {
     will-change: transform, opacity;
     backface-visibility: hidden;
     perspective: 1000px;
 }
 
-/* Reduce animations on mobile for performance */
 @media (max-width: 768px) {
     .code-element,
     .binary-rain,
@@ -263,7 +364,6 @@ body {
     }
 }
 
-/* Pause animations when user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .animated-background * {
         animation: none;
@@ -274,7 +374,6 @@ body {
     }
 }
 
-/* Page Management */
 .page {
     display: none;
 }
@@ -283,7 +382,6 @@ body {
     display: block;
 }
 
-/* Home Page Styles */
 header {
     text-align: center;
     margin-bottom: 40px;
@@ -386,7 +484,6 @@ header p {
     margin-top: 40px;
 }
 
-/* Button Styles */
 .btn-primary, .btn-secondary {
     padding: 8px 16px;
     border-radius: 6px;
@@ -421,7 +518,6 @@ header p {
     border-color: #8b949e;
 }
 
-/* Quiz Setup Page */
 .setup-container {
     background: #161b22;
     border: 1px solid #30363d;
@@ -519,7 +615,6 @@ header p {
     flex: 1;
 }
 
-/* Quiz Page Styles */
 .quiz-header {
     background: #161b22;
     border: 1px solid #30363d;
@@ -616,7 +711,6 @@ header p {
     opacity: 0.7;
 }
 
-/* Answer Feedback */
 .answer-feedback {
     background: #161b22;
     border: 1px solid #30363d;
@@ -659,7 +753,6 @@ header p {
     text-align: center;
 }
 
-/* Results Page */
 .results-container {
     background: #161b22;
     border: 1px solid #30363d;
@@ -724,7 +817,6 @@ header p {
     justify-content: center;
 }
 
-/* All Questions Page */
 .all-questions-header {
     background: #161b22;
     border: 1px solid #30363d;
@@ -836,7 +928,6 @@ header p {
     margin-top: 20px;
 }
 
-/* Review Page */
 .review-header {
     background: #161b22;
     border: 1px solid #30363d;
@@ -908,7 +999,6 @@ header p {
     justify-content: center;
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -960,7 +1050,6 @@ header p {
     margin-bottom: 20px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -998,7 +1087,6 @@ header p {
     }
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1008,7 +1096,6 @@ header p {
     animation: fadeIn 0.3s ease;
 }
 
-/* Loading Animation */
 .loading {
     display: inline-block;
     width: 20px;
