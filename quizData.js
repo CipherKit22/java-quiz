@@ -1,4 +1,3 @@
-// Quiz data extracted from the provided text files
 const quizData = {
     'chapter10-11': {
         title: 'Chapter 10 & 11 Testing',
@@ -726,10 +725,136 @@ const quizData = {
                 correct: 1
             }
         ]
+    },
+    'sql': {
+        title: 'Collection and SQL Testing',
+        description: 'Collections Framework and SQL Database Operations',
+        questions: [
+            {
+                id: 1,
+                question: "Which collection class allows duplicate elements?",
+                options: [
+                    "Set",
+                    "List",
+                    "Map",
+                    "Hashtable"
+                ],
+                correct: 1
+            },
+            {
+                id: 2,
+                question: "Which method is used to remove all elements from a Collection?",
+                options: [
+                    "delete()",
+                    "clear()",
+                    "removeAll()",
+                    "reset()"
+                ],
+                correct: 1
+            },
+            {
+                id: 3,
+                question: "Which interface extends Collection but stores elements in FIFO order?",
+                options: [
+                    "List",
+                    "Set",
+                    "Queue",
+                    "Map"
+                ],
+                correct: 2
+            },
+            {
+                id: 4,
+                question: "Which SQL command is used to retrieve data from a database?",
+                options: [
+                    "SELECT",
+                    "UPDATE",
+                    "DELETE",
+                    "INSERT"
+                ],
+                correct: 0
+            },
+            {
+                id: 5,
+                question: "Which SQL keyword is used to sort results?",
+                options: [
+                    "ORDER BY",
+                    "GROUP BY",
+                    "SORT BY",
+                    "RANK BY"
+                ],
+                correct: 0
+            },
+            {
+                id: 6,
+                question: "Which SQL statement updates data in a table?",
+                options: [
+                    "SELECT",
+                    "UPDATE",
+                    "MODIFY",
+                    "ALTER"
+                ],
+                correct: 1
+            },
+            {
+                id: 7,
+                question: "Which of the following creates a new table?",
+                options: [
+                    "MAKE TABLE",
+                    "NEW TABLE",
+                    "CREATE TABLE",
+                    "INSERT TABLE"
+                ],
+                correct: 2
+            },
+            {
+                id: 8,
+                question: "Which collection class does not allow duplicate elements?",
+                options: [
+                    "List",
+                    "Set",
+                    "Queue",
+                    "Vector"
+                ],
+                correct: 1
+            },
+            {
+                id: 9,
+                question: "Which collection is LIFO (Last In First Out)?",
+                options: [
+                    "Queue",
+                    "Stack",
+                    "LinkedList",
+                    "Set"
+                ],
+                correct: 1
+            },
+            {
+                id: 10,
+                question: "Which command is used to add new data in SQL?",
+                options: [
+                    "UPDATE",
+                    "ADD",
+                    "INSERT",
+                    "APPEND"
+                ],
+                correct: 2
+            },
+            {
+                id: 11,
+                question: "Which SQL clause filters rows before grouping?",
+                options: [
+                    "WHERE",
+                    "HAVING",
+                    "ORDER BY",
+                    "GROUP BY"
+                ],
+                correct: 0
+            }
+        ]
     }
 };
 
-// Helper function to get all questions from all categories
 function getAllQuestions() {
     const allQuestions = [];
     let questionId = 1;
@@ -749,7 +874,6 @@ function getAllQuestions() {
     return allQuestions;
 }
 
-// Helper function to shuffle array
 function shuffleArray(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
