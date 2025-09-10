@@ -3,6 +3,8 @@ let currentQuestions = [];
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let quizStartTime = null;
+let allDisplayedQuestions = [];
+let currentFilter = 'all';
 
 function showLoader() {
     document.getElementById('loader').classList.remove('hidden');
@@ -249,6 +251,8 @@ function filterQuestions(category) {
     });
     event.target.classList.add('active');
     
+    currentFilter = category;
+    document.getElementById('questionSearch').value = '';
     displayAllQuestions(category);
 }
 
@@ -269,7 +273,20 @@ function displayAllQuestions(filterCategory) {
         }));
     }
     
-    questionsToShow.forEach((question, index) => {
+    allDisplayedQuestions = questionsToShow;
+    renderQuestions(questionsToShow, filterCategory);
+}
+
+function renderQuestions(questions, filterCategory) {
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
+    
+    if (questions.length === 0) {
+        container.innerHTML = '<div class="no-results">No questions found matching your search.</div>';
+        return;
+    }
+    
+    questions.forEach((question, index) => {
         const questionItem = document.createElement('div');
         questionItem.className = 'question-item';
         
@@ -295,6 +312,22 @@ function displayAllQuestions(filterCategory) {
         
         container.appendChild(questionItem);
     });
+}
+
+function searchQuestions() {
+    const searchTerm = document.getElementById('questionSearch').value.toLowerCase().trim();
+    
+    if (searchTerm === '') {
+        renderQuestions(allDisplayedQuestions, currentFilter);
+        return;
+    }
+    
+    const filteredQuestions = allDisplayedQuestions.filter(question => {
+        const questionText = question.question.toLowerCase();
+        return questionText.includes(searchTerm);
+    });
+    
+    renderQuestions(filteredQuestions, currentFilter);
 }
 
 function downloadPDF() {
