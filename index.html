@@ -206,6 +206,10 @@
         <div id="allQuestionsPage" class="page">
             <div class="all-questions-header">
                 <h2>All Questions & Answers</h2>
+                <div class="search-container">
+                    <input type="text" id="questionSearch" placeholder="Search in question text..." onkeyup="searchQuestions()">
+                    <div class="search-icon">🔍</div>
+                </div>
                 <div class="filter-tabs">
                     <button class="filter-tab active" onclick="filterQuestions('all')">All</button>
                     <button class="filter-tab" onclick="filterQuestions('chapter10-11')">Chapter 10-11</button>
