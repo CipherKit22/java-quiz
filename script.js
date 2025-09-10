@@ -274,10 +274,10 @@ function displayAllQuestions(filterCategory) {
     }
     
     allDisplayedQuestions = questionsToShow;
-    renderQuestions(questionsToShow, filterCategory);
+    renderQuestions(questionsToShow, filterCategory, '');
 }
 
-function renderQuestions(questions, filterCategory) {
+function renderQuestions(questions, filterCategory, searchTerm = '') {
     const container = document.getElementById('questionsContainer');
     container.innerHTML = '';
     
@@ -291,13 +291,14 @@ function renderQuestions(questions, filterCategory) {
         questionItem.className = 'question-item';
         
         const categoryDisplay = filterCategory === 'all' ? question.categoryTitle : '';
+        const highlightedQuestion = searchTerm ? highlightText(question.question, searchTerm) : question.question;
         
         questionItem.innerHTML = `
             <div class="question-header">
                 <div class="question-number">Q${question.globalId || index + 1}</div>
                 ${categoryDisplay ? `<div class="question-category">${categoryDisplay}</div>` : ''}
             </div>
-            <div class="question-text">${question.question}</div>
+            <div class="question-text">${highlightedQuestion}</div>
             <div class="answer-options">
                 ${question.options.map((option, optIndex) => `
                     <div class="answer-option ${optIndex === question.correct ? 'correct' : ''}">
@@ -314,11 +315,20 @@ function renderQuestions(questions, filterCategory) {
     });
 }
 
+function highlightText(text, searchTerm) {
+    if (!searchTerm || searchTerm.trim() === '') {
+        return text;
+    }
+    
+    const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+}
+
 function searchQuestions() {
     const searchTerm = document.getElementById('questionSearch').value.toLowerCase().trim();
     
     if (searchTerm === '') {
-        renderQuestions(allDisplayedQuestions, currentFilter);
+        renderQuestions(allDisplayedQuestions, currentFilter, '');
         return;
     }
     
@@ -327,7 +337,7 @@ function searchQuestions() {
         return questionText.includes(searchTerm);
     });
     
-    renderQuestions(filteredQuestions, currentFilter);
+    renderQuestions(filteredQuestions, currentFilter, searchTerm);
 }
 
 function downloadPDF() {
