@@ -944,6 +944,31 @@ header p {
     color: #f0f6fc;
 }
 
+.highlight {
+    background: #58a6ff;
+    color: #0d1117;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: bold;
+    box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.3);
+    animation: highlightGlow 0.3s ease-in-out;
+}
+
+@keyframes highlightGlow {
+    0% {
+        background: #58a6ff;
+        box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.3);
+    }
+    50% {
+        background: #79c0ff;
+        box-shadow: 0 0 5px rgba(88, 166, 255, 0.6);
+    }
+    100% {
+        background: #58a6ff;
+        box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.3);
+    }
+}
+
 .answer-options {
     margin-bottom: 15px;
 }
