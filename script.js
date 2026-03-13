@@ -39,12 +39,8 @@ function selectCategory(category) {
 
 function getCategoryDisplayName(category) {
     switch(category) {
-        case 'chapter10-11':
-            return 'Chapter 10 & 11 Testing';
-        case 'gui':
-            return 'GUI Part I & II';
-        case 'sql':
-            return 'Collection and SQL Testing';
+        case 'java-quiz':
+            return 'Java Quiz';
         case 'all':
             return 'All Categories';
         default:
@@ -350,25 +346,11 @@ function downloadPDF() {
     let questionsToDownload = [];
     if (currentFilter === 'all') {
         questionsToDownload = getAllQuestions();
-    } else if (currentFilter === 'chapter 10-11') {
-        questionsToDownload = quizData['chapter10-11'].questions.map((q, index) => ({
+    } else if (currentFilter === 'java-quiz') {
+        questionsToDownload = quizData['java-quiz'].questions.map((q, index) => ({
             ...q,
-            category: 'chapter10-11',
-            categoryTitle: quizData['chapter10-11'].title,
-            globalId: index + 1
-        }));
-    } else if (currentFilter === 'gui') {
-        questionsToDownload = quizData['gui'].questions.map((q, index) => ({
-            ...q,
-            category: 'gui',
-            categoryTitle: quizData['gui'].title,
-            globalId: index + 1
-        }));
-    } else if (currentFilter === 'collection & sql') {
-        questionsToDownload = quizData['sql'].questions.map((q, index) => ({
-            ...q,
-            category: 'sql',
-            categoryTitle: quizData['sql'].title,
+            category: 'java-quiz',
+            categoryTitle: quizData['java-quiz'].title,
             globalId: index + 1
         }));
     }
@@ -377,9 +359,7 @@ function downloadPDF() {
     doc.text('Java Quiz Questions & Answers', 20, 20);
     doc.setFontSize(12);
     doc.text(`Category: ${currentFilter === 'all' ? 'All Categories' : 
-              currentFilter === 'chapter 10-11' ? 'Chapter 10 & 11 Testing' : 
-              currentFilter === 'gui' ? 'GUI Part I & II' : 
-              currentFilter === 'collection & sql' ? 'Collection and SQL Testing' : currentFilter}`, 20, 30);
+              currentFilter === 'java-quiz' ? 'Java Quiz' : currentFilter}`, 20, 30);
     doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 40);
     
     let yPosition = 55;
@@ -422,9 +402,7 @@ function downloadPDF() {
     });
     
     const filename = `java-quiz-${currentFilter === 'all' ? 'all-categories' : 
-                     currentFilter === 'chapter 10-11' ? 'chapter-10-11' : 
-                     currentFilter === 'gui' ? 'gui-part-1-2' : 
-                     currentFilter === 'collection & sql' ? 'collection-sql' : currentFilter}.pdf`;
+                     currentFilter === 'java-quiz' ? 'java-quiz' : currentFilter}.pdf`;
     doc.save(filename);
 }
 
