@@ -1,855 +1,725 @@
 const quizData = {
-    'chapter10-11': {
-        title: 'Chapter 10 & 11 Testing',
-        description: 'Polymorphism, Inheritance, and Exception Handling',
+    'java-quiz': {
+        title: 'Java Quiz',
+        description: 'Comprehensive Java Programming Quiz',
         questions: [
             {
                 id: 1,
-                question: "What is polymorphism in Java?",
-                options: [
-                    "The ability of a class to be abstract",
-                    "The ability of a class to have only one method",
-                    "The ability of an object to take many forms",
-                    "The process of hiding data"
-                ],
-                correct: 2
+                question: "A computer directly understands Machine language without translation.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 2,
-                question: "Which of the following types of polymorphism does Java support?",
-                options: [
-                    "Compile-time polymorphism",
-                    "Runtime polymorphism",
-                    "Both A and B",
-                    "None of the above"
-                ],
-                correct: 2
+                question: "Assembly language differs from high-level languages because it is close to machine language and requires an assembler.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 3,
-                question: "What determines method overriding in Java?",
-                options: [
-                    "Method name only",
-                    "Number of parameters",
-                    "Return type only",
-                    "Method signature"
-                ],
-                correct: 3
+                question: "Encapsulation is a feature of object-oriented programming.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 4,
-                question: "Which of the following best describes method overloading?",
-                options: [
-                    "Defining multiple methods with the same name but different parameters",
-                    "Defining multiple methods with the same name and same parameters",
-                    "Defining a method in a subclass with the same signature",
-                    "None of the above"
-                ],
+                question: "In object-oriented programming, a class is a blueprint for objects.",
+                options: ["True", "False"],
                 correct: 0
             },
             {
                 id: 5,
-                question: "What happens if two methods have the same name and parameter list but different return types?",
-                options: [
-                    "It is allowed",
-                    "It results in method overloading",
-                    "It causes a compile-time error",
-                    "It results in method overriding"
-                ],
-                correct: 2
-            },
-            {
-                id: 6,
-                question: "What does the final keyword mean when applied to a method in Java?",
-                options: [
-                    "The method cannot return any value",
-                    "The method cannot be overridden by subclasses",
-                    "The method cannot be called from other classes",
-                    "The method must be static"
-                ],
+                question: "C++/ Assembly/ Machine/ Binary language is considered high-level.",
+                options: ["True", "False"],
                 correct: 1
             },
             {
+                id: 6,
+                question: "A programming language translator that converts high-level code into machine code is called a compiler.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
                 id: 7,
-                question: "Which of these is a correct use of the final keyword?",
-                options: [
-                    "final class Student {}",
-                    "class final Student {}",
-                    "final void = method();",
-                    "public class final = Student;"
-                ],
+                question: "Javac component of the Java Development Kit (JDK) compiles Java source code.",
+                options: ["True", "False"],
                 correct: 0
             },
             {
                 id: 8,
-                question: "What happens when you try to extend a final class?\n\nfinal class Animal {\n    void sound() {\n        System.out.println(\"Animal sound\");\n    }\n}\n\nclass Dog extends Animal {\n    void sound() {\n        System.out.println(\"Bark\");\n    }\n}",
-                options: [
-                    "Animal sound",
-                    "Bark",
-                    "Compile-time error",
-                    "Runtime error"
-                ],
-                correct: 2
+                question: "JVM stands for Java Virtual Machine.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 9,
-                question: "Which keyword is used to implement an interface in a class?",
-                options: [
-                    "extends",
-                    "inherits",
-                    "implements",
-                    "imports"
-                ],
-                correct: 2
+                question: "Junit frameworks are commonly used for unit testing in Java.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 10,
-                question: "What is the main difference between an abstract class and an interface?",
-                options: [
-                    "Abstract class cannot have methods",
-                    "Interface can have constructors",
-                    "Abstract class can have method implementations, but interfaces cannot",
-                    "Interface supports multiple inheritance, abstract classes do not"
-                ],
-                correct: 2
+                question: "Java is an example of software technology used in software development.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 11,
-                question: "What is method overloading in Java?",
+                question: "Which of the following printf statements correctly prints the integer value of x?",
                 options: [
-                    "Redefining a method in a subclass",
-                    "Having methods with the same name but different parameter lists in the same class",
-                    "Using static methods in subclasses",
-                    "Changing return type only"
+                    "printf(\"x\");",
+                    "printf(\"%d\", x);",
+                    "printf(x);",
+                    "printf(\"%f\", x);"
                 ],
                 correct: 1
             },
             {
                 id: 12,
-                question: "Can constructors be overridden in Java?",
+                question: "Which type of memory is volatile and loses its content when the computer is turned off?",
                 options: [
-                    "Yes",
-                    "No",
-                    "Only in abstract classes",
-                    "Only in static classes"
-                ],
-                correct: 1
-            },
-            {
-                id: 13,
-                question: "Can we override private methods in Java?",
-                options: [
-                    "Yes",
-                    "No, private methods are not visible to subclasses",
-                    "Only if class is final",
-                    "Only if method is static"
-                ],
-                correct: 1
-            },
-            {
-                id: 14,
-                question: "Which of the following can NOT be overridden in Java?",
-                options: [
-                    "Non-static methods",
-                    "Final methods",
-                    "Abstract methods",
-                    "Methods with the same signature"
+                    "ROM",
+                    "RAM",
+                    "Cache",
+                    "Hard Disk"
                 ],
                 correct: 1
             },
             {
                 id: 15,
-                question: "What is the superclass of all exceptions in Java?",
-                options: [
-                    "Throwable",
-                    "Object",
-                    "Error",
-                    "Exception"
-                ],
+                question: "(!=) The relational operator checks if two values are not equal.",
+                options: ["True", "False"],
                 correct: 0
             },
             {
                 id: 16,
-                question: "Which of the following is an example of an unchecked exception?",
-                options: [
-                    "IOException",
-                    "SQLException",
-                    "ArrayIndexOutOfBoundsException",
-                    "ClassNotFoundException"
-                ],
-                correct: 2
+                question: "(%f) format specifier is used to print a floating-point number.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 17,
-                question: "Which keyword is used to manually throw an exception in Java?",
+                question: "Insert tab space is the purpose of the escape sequence \\t.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 18,
+                question: "Which statement will print the value of the integer variable num on the same line as the text \"Value\"?",
                 options: [
-                    "throws",
-                    "throw",
-                    "catch",
-                    "raise"
+                    "printf(\"Value\", num);",
+                    "printf(\"Value %d\", num);",
+                    "printf(\"%d Value\", num);",
+                    "printf(\"%s %d\", num);"
                 ],
                 correct: 1
             },
             {
-                id: 18,
-                question: "Which of the following is the correct syntax to throw an exception?",
-                options: [
-                    "throw new Exception();",
-                    "throws Exception();",
-                    "throw Exception;",
-                    "catch new Exception();"
-                ],
-                correct: 0
-            },
-            {
                 id: 19,
-                question: "What is the purpose of the catch block?",
+                question: "Which of the following is correct to declare two integer variables x and y?",
                 options: [
-                    "To create new exceptions",
-                    "To define code that is always executed",
-                    "To handle exceptions thrown in the try block",
-                    "To clean up resources"
+                    "int x y;",
+                    "int x, y;",
+                    "int x; int y;",
+                    "Both B and C"
                 ],
-                correct: 2
+                correct: 3
             },
             {
                 id: 20,
-                question: "Which of the following keywords is used to declare that a method may throw an exception?",
-                options: [
-                    "throw",
-                    "final",
-                    "throws",
-                    "catch"
-                ],
-                correct: 2
+                question: "The location where a variable is stored is called a memory address.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 21,
-                question: "Which of the following statements is true?",
+                question: "What is the result of:\nint x = 10;\nx++;\nprintf(\"%d\", x);",
                 options: [
-                    "One try block must have only one catch",
-                    "A try block must be followed by finally",
-                    "Multiple catch blocks are allowed after a try block",
-                    "A catch block must be followed by another catch"
+                    "9",
+                    "10",
+                    "11",
+                    "12"
                 ],
                 correct: 2
             },
             {
                 id: 22,
-                question: "Which exception occurs if you divide a number by zero?",
-                options: [
-                    "IOException",
-                    "NumberFormatException",
-                    "ArithmeticException",
-                    "InputMismatchException"
-                ],
-                correct: 2
+                question: "The class keyword is used to define a class in Java.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
                 id: 23,
-                question: "Which package is used to create graphical user interfaces in Java?",
+                question: "How do you create an object of class Car?",
                 options: [
-                    "java.io",
-                    "java.util",
-                    "java.awt",
-                    "java.sql"
+                    "Car c;",
+                    "Car c = new Car();",
+                    "Car = new c();",
+                    "new Car;"
                 ],
-                correct: 2
+                correct: 1
             },
             {
                 id: 24,
-                question: "Which method is used to make a frame visible?",
+                question: "Which of the following calls a method drive() of object c?",
                 options: [
-                    "display(true)",
-                    "setShow(true)",
-                    "show(true)",
-                    "setVisible(true)"
+                    "drive(c);",
+                    "c.drive();",
+                    "c->drive();",
+                    "Car.drive(c);"
                 ],
-                correct: 3
+                correct: 1
             },
             {
                 id: 25,
-                question: "In Java AWT, which component is used to enter a single line of text?",
+                question: "A class can contain:",
                 options: [
-                    "TextField",
-                    "TextArea",
-                    "Label",
-                    "Button"
+                    "Only methods",
+                    "Only variables",
+                    "Both variables and methods",
+                    "None of the above"
                 ],
-                correct: 0
+                correct: 2
             },
             {
                 id: 26,
-                question: "Which method is used to close a JFrame properly when clicking the close button?",
+                question: "Which of the following correctly declares a method with an integer parameter?",
                 options: [
-                    "setClose(true)",
-                    "setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);",
-                    "close();",
-                    "exit();"
-                ],
-                correct: 1
-            },
-            {
-                id: 27,
-                question: "Which of these methods is used to set the size of a window?",
-                options: [
-                    "setDimensions()",
-                    "size()",
-                    "setSize()",
-                    "setWindowSize()"
-                ],
-                correct: 2
-            },
-            {
-                id: 28,
-                question: "What does the following code do?\nframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);",
-                options: [
-                    "Hides the window",
-                    "Terminates the program when window is closed",
-                    "Minimizes the window",
-                    "Clears all components"
-                ],
-                correct: 1
-            },
-            {
-                id: 29,
-                question: "In Swing, which class is used to display a pop-up message dialog box?",
-                options: [
-                    "JOptionPane",
-                    "JDialog",
-                    "JFrame",
-                    "JTextPane"
-                ],
-                correct: 0
-            },
-            {
-                id: 30,
-                question: "Which event is triggered when the user presses Enter in a JTextField?",
-                options: [
-                    "KeyEvent",
-                    "TextEvent",
-                    "ActionEvent",
-                    "InputEvent"
-                ],
-                correct: 2
-            }
-        ]
-    },
-    'gui': {
-        title: 'GUI Part I & II',
-        description: 'Swing Components, Layout Managers, and Event Handling',
-        questions: [
-            {
-                id: 1,
-                question: "Which package must be imported to use JOptionPane in Java?",
-                options: [
-                    "java.awt.*",
-                    "javax.swing.*",
-                    "java.util.*",
-                    "java.io.*"
-                ],
-                correct: 1
-            },
-            {
-                id: 2,
-                question: "Which of the following methods is used to display a message dialog box?",
-                options: [
-                    "JOptionPane.showInputDialog()",
-                    "JOptionPane.showConfirmDialog()",
-                    "JOptionPane.showMessageDialog()",
-                    "JOptionPane.showOptionDialog()"
-                ],
-                correct: 2
-            },
-            {
-                id: 3,
-                question: "If you want to ask the user to enter a value using a dialog box, which method should be used?",
-                options: [
-                    "showInputDialog()",
-                    "showMessageDialog()",
-                    "showConfirmDialog()",
-                    "showOptionDialog()"
-                ],
-                correct: 0
-            },
-            {
-                id: 4,
-                question: "Which Swing component is used to display a short string or an image icon?",
-                options: [
-                    "JTextField",
-                    "JLabel",
-                    "JButton",
-                    "JTextArea"
-                ],
-                correct: 1
-            },
-            {
-                id: 5,
-                question: "Which Swing component allows the user to select one item from a drop-down list?",
-                options: [
-                    "JRadioButton",
-                    "JCheckBox",
-                    "JComboBox",
-                    "JList"
-                ],
-                correct: 2
-            },
-            {
-                id: 6,
-                question: "Which component is used to create a multi-line text area?",
-                options: [
-                    "JTextField",
-                    "JLabel",
-                    "JTextArea",
-                    "JPasswordField"
-                ],
-                correct: 2
-            },
-            {
-                id: 7,
-                question: "Which of the following is NOT a Swing component?",
-                options: [
-                    "JFrame",
-                    "JButton",
-                    "JPanel",
-                    "Frame"
-                ],
-                correct: 3
-            },
-            {
-                id: 8,
-                question: "Which method is used to make a JFrame visible?",
-                options: [
-                    "setVisible(true)",
-                    "display(true)",
-                    "show()",
-                    "open()"
-                ],
-                correct: 0
-            },
-            {
-                id: 9,
-                question: "Which listener is commonly used to handle button click events in Swing?",
-                options: [
-                    "MouseListener",
-                    "KeyListener",
-                    "ActionListener",
-                    "WindowListener"
-                ],
-                correct: 2
-            },
-            {
-                id: 10,
-                question: "Which listener should be added to a JCheckBox to check when it is selected or deselected?",
-                options: [
-                    "ActionListener",
-                    "ItemListener",
-                    "KeyListener",
-                    "WindowListener"
-                ],
-                correct: 1
-            },
-            {
-                id: 11,
-                question: "To handle menu item selection in a JMenuItem, which listener is most appropriate?",
-                options: [
-                    "ItemListener",
-                    "ActionListener",
-                    "ChangeListener",
-                    "MouseMotionListener"
-                ],
-                correct: 1
-            },
-            {
-                id: 12,
-                question: "Which listener should be used with a JSlider to detect value changes?",
-                options: [
-                    "ChangeListener",
-                    "ActionListener",
-                    "KeyListener",
-                    "ItemListener"
-                ],
-                correct: 0
-            },
-            {
-                id: 13,
-                question: "Which listener is best suited for JRadioButton selections?",
-                options: [
-                    "KeyListener",
-                    "MouseListener",
-                    "ItemListener",
-                    "WindowListener"
-                ],
-                correct: 2
-            },
-            {
-                id: 14,
-                question: "Which layout manager arranges components in a row, one after another, like words in a sentence?",
-                options: [
-                    "FlowLayout",
-                    "BorderLayout",
-                    "GridLayout",
-                    "CardLayout"
-                ],
-                correct: 0
-            },
-            {
-                id: 15,
-                question: "Which layout manager divides the container into five regions: North, South, East, West, and Center?",
-                options: [
-                    "FlowLayout",
-                    "GridLayout",
-                    "BorderLayout",
-                    "CardLayout"
-                ],
-                correct: 2
-            },
-            {
-                id: 16,
-                question: "Which layout manager arranges components in a rectangular grid (rows and columns)?",
-                options: [
-                    "GridLayout",
-                    "FlowLayout",
-                    "BorderLayout",
-                    "GridBagLayout"
-                ],
-                correct: 0
-            },
-            {
-                id: 17,
-                question: "If two components are added to the same region in BorderLayout, what happens?",
-                options: [
-                    "Both will be displayed side by side",
-                    "The first will be replaced by the second",
-                    "Both will overlap",
-                    "An error occurs"
-                ],
-                correct: 1
-            },
-            {
-                id: 18,
-                question: "Which layout manager is best suited when you want all cells to be equal size?",
-                options: [
-                    "FlowLayout",
-                    "BorderLayout",
-                    "GridLayout",
-                    "CardLayout"
-                ],
-                correct: 2
-            },
-            {
-                id: 19,
-                question: "Which package provides BoxLayout and GridBagLayout in Java?",
-                options: [
-                    "java.awt",
-                    "javax.swing",
-                    "Both a and b",
-                    "java.util"
-                ],
-                correct: 2
-            },
-            {
-                id: 20,
-                question: "BoxLayout arranges components in which direction(s)?",
-                options: [
-                    "Horizontally only",
-                    "Vertically only",
-                    "Both horizontally and vertically",
-                    "In a grid"
-                ],
-                correct: 2
-            },
-            {
-                id: 21,
-                question: "To create a vertical BoxLayout, which constant is used?",
-                options: [
-                    "BoxLayout.X_AXIS",
-                    "BoxLayout.Y_AXIS",
-                    "BoxLayout.LINE_AXIS",
-                    "BoxLayout.PAGE_AXIS"
-                ],
-                correct: 1
-            },
-            {
-                id: 22,
-                question: "Which of the following statements about BoxLayout is true?",
-                options: [
-                    "All components in the box are forced to have the same size",
-                    "Components keep their preferred sizes",
-                    "Components are resized to fill the container fully",
-                    "Components overlap each other"
-                ],
-                correct: 1
-            },
-            {
-                id: 23,
-                question: "Which layout manager is the most flexible and allows placing components in a grid with varying sizes?",
-                options: [
-                    "FlowLayout",
-                    "BorderLayout",
-                    "GridLayout",
-                    "GridBagLayout"
-                ],
-                correct: 3
-            },
-            {
-                id: 24,
-                question: "In GridBagLayout, which property controls how a component should be resized to fit its cell?",
-                options: [
-                    "anchor",
-                    "gridwidth",
-                    "fill",
-                    "insets"
-                ],
-                correct: 2
-            },
-            {
-                id: 25,
-                question: "Which Swing component is placed inside a JDesktopPane to represent a child window?",
-                options: [
-                    "JPanel",
-                    "JInternalFrame",
-                    "JFrame",
-                    "JDialog"
-                ],
-                correct: 1
-            },
-            {
-                id: 26,
-                question: "Which of the following allows you to add multiple tabs in a single window?",
-                options: [
-                    "JTabbedPane",
-                    "JDesktopPane",
-                    "JScrollPane",
-                    "JPanel"
+                    "void setNumber(int num)",
+                    "int setNumber()",
+                    "void setNumber()",
+                    "void setNumber(num int)"
                 ],
                 correct: 0
             },
             {
                 id: 27,
-                question: "Which method is used to change the Look-and-Feel at runtime?",
+                question: "Which method is used to retrieve the value of an instance variable?",
                 options: [
-                    "UIManager.setLookAndFeel(String className)",
-                    "JFrame.setLookAndFeel(String className)",
-                    "LookAndFeel.setStyle()",
-                    "UIManager.applyLookAndFeel()"
-                ],
-                correct: 0
-            },
-            {
-                id: 28,
-                question: "In a JDesktopPane, multiple JInternalFrame objects can be:",
-                options: [
-                    "Minimized",
-                    "Maximized",
-                    "Closed",
-                    "All of the above"
-                ],
-                correct: 3
-            },
-            {
-                id: 29,
-                question: "Which constructor of JInternalFrame allows you to specify whether the frame is resizable, closable, maximizable, and iconifiable?",
-                options: [
-                    "JInternalFrame(String title)",
-                    "JInternalFrame(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable)",
-                    "JInternalFrame()",
-                    "JInternalFrame(String title, boolean resizable)"
+                    "set method",
+                    "get method",
+                    "print method",
+                    "main method"
                 ],
                 correct: 1
             },
             {
-                id: 30,
-                question: "What is the default tab placement in JTabbedPane?",
+                id: 28,
+                question: "Which method is used to modify an instance variable?",
                 options: [
-                    "TOP",
-                    "LEFT",
-                    "BOTTOM",
-                    "RIGHT"
+                    "get method",
+                    "set method",
+                    "display method",
+                    "main method"
+                ],
+                correct: 1
+            },
+            {
+                id: 29,
+                question: "Which of the following has default value 0?",
+                options: [
+                    "int",
+                    "String",
+                    "Array",
+                    "Object"
                 ],
                 correct: 0
+            },
+            {
+                id: 30,
+                question: "Which is correct syntax for a constructor in Java?",
+                options: [
+                    "void Car() {}",
+                    "Car() {}",
+                    "int Car() {}",
+                    "public void Car() {}"
+                ],
+                correct: 1
             },
             {
                 id: 31,
-                question: "Which listener is typically used to track tab selection changes in JTabbedPane?",
+                question: "A constructor without parameters is called the default constructor.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 32,
+                question: "Can a class have multiple constructors?",
                 options: [
-                    "ActionListener",
-                    "ChangeListener",
-                    "ItemListener",
-                    "ListSelectionListener"
+                    "No",
+                    "Yes, with different parameters",
+                    "Only one",
+                    "Only if static"
                 ],
                 correct: 1
             },
             {
-                id: 32,
-                question: "In Swing Pluggable Look-and-Feel, which class provides the current UI settings?",
-                options: [
-                    "UIManager",
-                    "LookAndFeel",
-                    "SwingUtilities",
-                    "JFrameManager"
-                ],
-                correct: 0
-            },
-            {
                 id: 33,
-                question: "Which interface is used to handle mouse click, press, release, enter, and exit events?",
-                options: [
-                    "MouseListener",
-                    "MouseMotionListener",
-                    "MouseAdapter",
-                    "ActionListener"
-                ],
-                correct: 0
+                question: "Using the class name with the new keyword is called a constructor.",
+                options: ["True", "False"],
+                correct: 1
             },
             {
                 id: 34,
-                question: "Which interface is used to track mouse dragging and movement?",
+                question: "Which of the following is a floating-point type in Java?",
                 options: [
-                    "MouseListener",
-                    "MouseMotionListener",
-                    "MouseAdapter",
-                    "KeyListener"
+                    "int",
+                    "double",
+                    "char",
+                    "boolean"
                 ],
                 correct: 1
             },
             {
                 id: 35,
-                question: "Which package contains the classes and interfaces for mouse event handling in Java Swing?",
-                options: [
-                    "java.util.*",
-                    "java.awt.event.*",
-                    "javax.swing.event.*",
-                    "java.io.*"
-                ],
-                correct: 1
-            }
-        ]
-    },
-    'sql': {
-        title: 'Collection and SQL Testing',
-        description: 'Collections Framework and SQL Database Operations',
-        questions: [
-            {
-                id: 1,
-                question: "Which collection class allows duplicate elements?",
-                options: [
-                    "Set",
-                    "List",
-                    "Map",
-                    "Hashtable"
-                ],
-                correct: 1
+                question: "A step-by-step solution to a problem is called an algorithm.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
-                id: 2,
-                question: "Which method is used to remove all elements from a Collection?",
-                options: [
-                    "delete()",
-                    "clear()",
-                    "removeAll()",
-                    "reset()"
-                ],
-                correct: 1
+                id: 36,
+                question: "Algorithms can be represented using pseudocode or flowcharts.",
+                options: ["True", "False"],
+                correct: 0
             },
             {
-                id: 3,
-                question: "Which interface extends Collection but stores elements in FIFO order?",
+                id: 37,
+                question: "Which is a correct pseudocode statement for inputting a number?",
                 options: [
-                    "List",
-                    "Set",
-                    "Queue",
-                    "Map"
-                ],
-                correct: 2
-            },
-            {
-                id: 4,
-                question: "Which SQL command is used to retrieve data from a database?",
-                options: [
-                    "SELECT",
-                    "UPDATE",
-                    "DELETE",
-                    "INSERT"
+                    "input number",
+                    "scanf(\"%d\", number)",
+                    "cin >> number",
+                    "read(number)"
                 ],
                 correct: 0
             },
             {
-                id: 5,
-                question: "Which SQL keyword is used to sort results?",
+                id: 38,
+                question: "Which of the following is NOT a control structure?",
                 options: [
-                    "ORDER BY",
-                    "GROUP BY",
-                    "SORT BY",
-                    "RANK BY"
+                    "Sequence",
+                    "Selection",
+                    "Repetition",
+                    "Variable"
+                ],
+                correct: 3
+            },
+            {
+                id: 39,
+                question: "Which of the following is valid?",
+                options: [
+                    "if (x > 5) x = 10;",
+                    "if x > 5 then x = 10;",
+                    "if (x > 5) then x = 10;",
+                    "if x > 5: x = 10;"
                 ],
                 correct: 0
             },
             {
-                id: 6,
-                question: "Which SQL statement updates data in a table?",
+                id: 40,
+                question: "Which statement is correct?",
                 options: [
-                    "SELECT",
-                    "UPDATE",
-                    "MODIFY",
-                    "ALTER"
-                ],
-                correct: 1
-            },
-            {
-                id: 7,
-                question: "Which of the following creates a new table?",
-                options: [
-                    "MAKE TABLE",
-                    "NEW TABLE",
-                    "CREATE TABLE",
-                    "INSERT TABLE"
-                ],
-                correct: 2
-            },
-            {
-                id: 8,
-                question: "Which collection class does not allow duplicate elements?",
-                options: [
-                    "List",
-                    "Set",
-                    "Queue",
-                    "Vector"
-                ],
-                correct: 1
-            },
-            {
-                id: 9,
-                question: "Which collection is LIFO (Last In First Out)?",
-                options: [
-                    "Queue",
-                    "Stack",
-                    "LinkedList",
-                    "Set"
-                ],
-                correct: 1
-            },
-            {
-                id: 10,
-                question: "Which command is used to add new data in SQL?",
-                options: [
-                    "UPDATE",
-                    "ADD",
-                    "INSERT",
-                    "APPEND"
-                ],
-                correct: 2
-            },
-            {
-                id: 11,
-                question: "Which SQL clause filters rows before grouping?",
-                options: [
-                    "WHERE",
-                    "HAVING",
-                    "ORDER BY",
-                    "GROUP BY"
+                    "if (x > 0) print(\"Positive\"); else print(\"Non-positive\");",
+                    "if (x > 0) print(\"Positive\"); print(\"Non-positive\"); else;",
+                    "if x > 0 then print(\"Positive\") else print(\"Non-positive\")",
+                    "if x > 0: print(\"Positive\"); else: print(\"Non-positive\")"
                 ],
                 correct: 0
+            },
+            {
+                id: 41,
+                question: "While loop is commonly used for counter-controlled repetition.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 42,
+                question: "Math class provides mathematical methods such as sqrt() and pow().",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 43,
+                question: "Static keyword is used to declare a class variable.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 44,
+                question: "Math class belongs to java.lang package.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 45,
+                question: "In Java programming, static keyword is used when declaring a variable that belongs to the class itself rather than to any specific object created from that class.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 46,
+                question: "In Java, Math class provides commonly used mathematical operations such as square root, power calculation, and absolute value functions.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 47,
+                question: "When defining a method that accepts more than one parameter, how should the parameters be separated inside the parentheses according to Java syntax rules?",
+                options: [
+                    "By semicolons",
+                    "By commas",
+                    "By spaces",
+                    "By dots"
+                ],
+                correct: 1
+            },
+            {
+                id: 50,
+                question: "When passing multiple arguments to a method, a compile-time error will occur if the data types of the arguments do not match the method’s parameter list.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 51,
+                question: "In a method declaration, where does the return type appear in relation to the method name and parameter list?",
+                options: [
+                    "After the method name",
+                    "Before the method name",
+                    "Inside the parentheses",
+                    "At the end"
+                ],
+                correct: 1
+            },
+            {
+                id: 52,
+                question: "If two methods have the same name and the same parameter types but different return types, what will happen during compilation?",
+                options: [
+                    "It will compile successfully",
+                    "A compile-time error occurs",
+                    "A runtime error occurs",
+                    "The program will run without issues"
+                ],
+                correct: 1
+            },
+            {
+                id: 53,
+                question: "Which situation represents a correct example of method overloading in a Java class?",
+                options: [
+                    "Same name, same parameters",
+                    "Same name, different parameters",
+                    "Different name, same parameters",
+                    "Different name, different parameters"
+                ],
+                correct: 1
+            },
+            {
+                id: 54,
+                question: "The method-call stack follows which data structure principle when managing method calls in Java programs?",
+                options: [
+                    "FIFO",
+                    "LIFO",
+                    "Queue",
+                    "Stack"
+                ],
+                correct: 1
+            },
+            {
+                id: 55,
+                question: "Which keyword is used to force type conversion in Java?",
+                options: [
+                    "convert",
+                    "cast",
+                    "(type)",
+                    "change"
+                ],
+                correct: 2
+            },
+            {
+                id: 56,
+                question: "The Java API provides a large collection of prewritten classes and interfaces that programmers can reuse in their programs; API stands for Application Programming Interface.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 57,
+                question: "The Scanner class, which is commonly used for user input, belongs to which package?",
+                options: [
+                    "java.io",
+                    "java.util",
+                    "java.lang",
+                    "java.net"
+                ],
+                correct: 1
+            },
+            {
+                id: 58,
+                question: "Why are packages used in the Java programming language?",
+                options: [
+                    "To increase errors",
+                    "To organize related classes and interfaces",
+                    "To reduce execution speed",
+                    "To avoid compilation"
+                ],
+                correct: 1
+            },
+            {
+                id: 59,
+                question: "Random class is used for generating random numbers in Java applications.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 60,
+                question: "The nextInt() method is commonly used to generate a random integer within a specific range.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 61,
+                question: "Random-number generation is widely used in which type of applications?",
+                options: [
+                    "Text editors only",
+                    "Games and simulations",
+                    "Compilers",
+                    "Operating systems only"
+                ],
+                correct: 1
+            },
+            {
+                id: 62,
+                question: "In Java, an enumeration (enum) is a special data type that defines a fixed set of constants; which keyword is used to declare it?",
+                options: [
+                    "final",
+                    "static",
+                    "enum",
+                    "const"
+                ],
+                correct: 2
+            },
+            {
+                id: 63,
+                question: "Instance variables are accessible only inside their classes.",
+                options: ["True", "False"],
+                correct: 1
+            },
+            {
+                id: 64,
+                question: "In Java, int[] numbers syntax correctly declares an integer array named numbers.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 65,
+                question: "The new keyword is used to create an array object in Java.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 66,
+                question: "What is the default value of elements in a newly created int array?",
+                options: [
+                    "null",
+                    "1",
+                    "0",
+                    "undefined"
+                ],
+                correct: 2
+            },
+            {
+                id: 67,
+                question: "A 2D array is declared as:",
+                options: [
+                    "int[] a",
+                    "int a[]",
+                    "int[][] a",
+                    "int a"
+                ],
+                correct: 2
+            },
+            {
+                id: 68,
+                question: "Sorting array uses which utility class?",
+                options: [
+                    "Math",
+                    "Arrays",
+                    "System",
+                    "Random"
+                ],
+                correct: 1
+            },
+            {
+                id: 69,
+                question: "Binary search requires the array to be:",
+                options: [
+                    "Random",
+                    "Sorted",
+                    "Empty",
+                    "Null"
+                ],
+                correct: 1
+            },
+            {
+                id: 70,
+                question: "In object-oriented programming with Java, constructor overloading occurs when a class defines multiple constructors that share the same name but differ in their parameter lists; which of the following best describes this concept?",
+                options: [
+                    "Constructors with different class names",
+                    "Constructors with the same name but different parameters",
+                    "Constructors with different return types only",
+                    "Constructors without parameters"
+                ],
+                correct: 1
+            },
+            {
+                id: 71,
+                question: "Which of the following conditions is required for constructors to be considered overloaded in Java?",
+                options: [
+                    "They must have different access modifiers only",
+                    "They must have different parameter lists",
+                    "They must return different values",
+                    "They must belong to different classes"
+                ],
+                correct: 1
+            },
+            {
+                id: 72,
+                question: "In Java, constructors always have the same name as the class; therefore, how does the compiler distinguish between overloaded constructors?",
+                options: [
+                    "By checking return type",
+                    "By checking parameter types and number",
+                    "By checking method body",
+                    "By checking comments"
+                ],
+                correct: 1
+            },
+            {
+                id: 73,
+                question: "Can constructors in Java have a return type such as void or int?",
+                options: [
+                    "Yes",
+                    "No",
+                    "Only void",
+                    "Only int"
+                ],
+                correct: 1
+            },
+            {
+                id: 74,
+                question: "If a class contains three constructors with different parameter lists, this is an example of:",
+                options: [
+                    "Method overriding",
+                    "Constructor overloading",
+                    "Inheritance",
+                    "Encapsulation"
+                ],
+                correct: 1
+            },
+            {
+                id: 75,
+                question: "this keyword is used inside a constructor to call another constructor in the same class.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 76,
+                question: "If two constructors differ only in parameter data types but have the same number of parameters, are they considered overloaded?",
+                options: [
+                    "Yes",
+                    "No",
+                    "Only if they have different names",
+                    "Only if they have different return types"
+                ],
+                correct: 0
+            },
+            {
+                id: 77,
+                question: "A no-argument constructor is a constructor that has no parameters.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 78,
+                question: "In Java, if no constructor is explicitly defined in a class, what does the compiler automatically provide?",
+                options: [
+                    "A parameterized constructor",
+                    "A default constructor",
+                    "A copy constructor",
+                    "No constructor"
+                ],
+                correct: 1
+            },
+            {
+                id: 79,
+                question: "In object-oriented programming, when one class inherits the properties and behaviors of another class to promote code reuse and hierarchical relationships, what is the parent class called?",
+                options: [
+                    "Subclass",
+                    "Superclass",
+                    "Child class",
+                    "Parent class"
+                ],
+                correct: 1
+            },
+            {
+                id: 80,
+                question: "The class that inherits fields and methods from another class is known as subclass.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 81,
+                question: "Which keyword is used in Java to establish an inheritance relationship between a subclass and a superclass?",
+                options: [
+                    "implements",
+                    "extends",
+                    "inherits",
+                    "super"
+                ],
+                correct: 1
+            },
+            {
+                id: 82,
+                question: "The keyword used inside a subclass constructor to call the superclass constructor explicitly is super().",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 83,
+                question: "Inheritance in Java supports which type of relationship between classes?",
+                options: [
+                    "has-a relationship",
+                    "is-a relationship",
+                    "uses-a relationship",
+                    "contains-a relationship"
+                ],
+                correct: 1
+            },
+            {
+                id: 84,
+                question: "A subclass can override a method of its superclass to provide a specialized implementation.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 85,
+                question: "In Java, the protected access modifier allows members to be accessed within the same package and by subclasses.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 86,
+                question: "The protected access modifier provides more access than private but less access than public.",
+                options: ["True", "False"],
+                correct: 0
+            },
+            {
+                id: 87,
+                question: "If a member is declared private in the superclass, can a subclass access it directly?",
+                options: [
+                    "Yes",
+                    "No",
+                    "Only through getter methods",
+                    "Only if it's static"
+                ],
+                correct: 1
             }
         ]
     }
@@ -858,7 +728,7 @@ const quizData = {
 function getAllQuestions() {
     const allQuestions = [];
     let questionId = 1;
-    
+
     Object.keys(quizData).forEach(categoryKey => {
         const category = quizData[categoryKey];
         category.questions.forEach(question => {
@@ -870,7 +740,7 @@ function getAllQuestions() {
             });
         });
     });
-    
+
     return allQuestions;
 }
 
